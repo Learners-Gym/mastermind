@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神域で、次の一手を決める。～島根～</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #f8faf6;
+  color: #1a2a1a;
+  -webkit-font-smoothing: antialiased;
+}
+.hero { position: relative; height: 100svh; min-height: 620px; overflow: hidden; }
+.hero img { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,28,10,0.15) 0%, rgba(10,28,10,0.6) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 40px 28px;
+}
+.hero-kicker { font-size: 11px; letter-spacing: 0.2em; color: rgba(200,230,200,0.55); text-transform: uppercase; margin-bottom: 20px; }
+.hero-title { font-size: 32px; font-weight: 500; color: #e8f4e8; line-height: 1.42; letter-spacing: -0.01em; margin-bottom: 8px; }
+.hero-region { font-size: 12px; letter-spacing: 0.22em; color: rgba(200,230,200,0.45); margin-bottom: 22px; }
+.hero-copy { font-size: 14px; color: rgba(200,230,200,0.72); line-height: 1.9; margin-bottom: 36px; }
+.hero-cta { display: inline-block; background: rgba(200,230,200,0.14); border: 1px solid rgba(200,230,200,0.3); color: #e8f4e8; font-size: 13px; padding: 12px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.05em; }
+section { padding: 68px 24px; }
+.label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #5a7a5a; margin-bottom: 16px; }
+.s-title { font-size: 23px; font-weight: 500; color: #1a2a1a; line-height: 1.45; margin-bottom: 14px; }
+.s-body { font-size: 14px; color: #6a8a6a; line-height: 1.9; }
+.divider { height: 1px; background: #d8e8d4; margin: 0 24px; }
+.concept { background: #edf5ea; }
+.concept-quote { font-size: 22px; font-weight: 400; color: #1a2a1a; line-height: 1.62; margin-bottom: 20px; }
+.value-list { margin-top: 28px; }
+.value-item { padding: 22px 0; border-bottom: 1px solid #d8e8d4; display: grid; grid-template-columns: 36px 1fr; gap: 12px; }
+.value-item:last-child { border-bottom: none; }
+.v-num { font-size: 11px; color: #3d7a3d; padding-top: 2px; }
+.v-title { font-size: 15px; font-weight: 500; color: #1a2a1a; margin-bottom: 5px; }
+.v-desc { font-size: 13px; color: #6a8a6a; line-height: 1.7; }
+.program { background: #1a2a1a; }
+.program .label { color: #4a6a4a; }
+.program .s-title { color: #e8f4e8; }
+.prog-list { margin-top: 28px; display: flex; flex-direction: column; gap: 2px; }
+.prog-card { background: #22342a; padding: 26px 20px; border-radius: 12px; }
+.prog-tag { font-size: 10px; color: #4a6a4a; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.prog-title { font-size: 17px; font-weight: 500; color: #d8f0d8; line-height: 1.5; margin-bottom: 8px; }
+.prog-by { font-size: 12px; color: #3a5a3a; margin-bottom: 10px; }
+.prog-desc { font-size: 13px; color: #7a9a7a; line-height: 1.75; }
+.prog-kws { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.prog-kw { font-size: 11px; color: #4a6a4a; border: 1px solid #2e4a2e; border-radius: 6px; padding: 3px 9px; }
+.spots-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.spot { position: relative; overflow: hidden; }
+.spot img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.spot.wide img { aspect-ratio: 16/8; }
+.spot.wide { grid-column: span 2; }
+.spot-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px; background: linear-gradient(to top, rgba(10,28,10,0.82) 0%, transparent 100%); }
+.spot-name { font-size: 13px; font-weight: 500; color: #d8f0d8; margin-bottom: 3px; }
+.spot-meaning { font-size: 11px; color: rgba(200,230,200,0.55); line-height: 1.5; }
+.who { background: #edf5ea; }
+.who-list { margin-top: 22px; }
+.who-item { padding: 15px 0; border-bottom: 1px solid #d0e8cc; font-size: 14px; color: #1a2a1a; display: flex; align-items: center; gap: 12px; }
+.who-item:last-child { border-bottom: none; }
+.who-dot { width: 5px; height: 5px; border-radius: 50%; background: #3d7a3d; flex-shrink: 0; }
+.ov-table { margin-top: 22px; border: 1px solid #d8e8d4; border-radius: 16px; overflow: hidden; }
+.ov-row { display: grid; grid-template-columns: 78px 1fr; border-bottom: 1px solid #d8e8d4; }
+.ov-row:last-child { border-bottom: none; }
+.ov-k { background: #edf5ea; padding: 14px; font-size: 12px; color: #5a7a5a; display: flex; align-items: center; }
+.ov-v { padding: 14px 16px; font-size: 13px; color: #1a2a1a; display: flex; align-items: center; line-height: 1.6; }
+.presenter { background: #edf5ea; }
+.cta { background: #1a2a1a; text-align: center; padding: 88px 28px; }
+.cta .label { color: #4a6a4a; }
+.cta-title { font-size: 28px; font-weight: 500; color: #d8f0d8; line-height: 1.45; letter-spacing: -0.02em; margin-bottom: 14px; }
+.cta-sub { font-size: 14px; color: #6a8a6a; line-height: 1.9; margin-bottom: 44px; }
+.btn-primary { display: block; background: #3d7a3d; color: #e8f4e8; font-size: 15px; padding: 14px; border-radius: 8px; text-decoration: none; margin-bottom: 10px; }
+.btn-secondary { display: block; border: 1px solid #2e4a2e; color: #4a6a4a; font-size: 14px; padding: 14px; border-radius: 8px; text-decoration: none; }
+footer { background: #0e1a0e; padding: 32px 24px; text-align: center; }
+footer p { font-size: 11px; color: #3a5a3a; line-height: 1.9; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img src="松江フォーゲルパーク_12.png" alt="松江フォーゲルパーク">
+  <div class="hero-overlay">
+    <p class="hero-kicker">Shimane Training Journey</p>
+    <h1 class="hero-title">神域で、<br>次の一手を決める。</h1>
+    <p class="hero-region">〜 島 根 〜</p>
+    <p class="hero-copy">神話と歴史、美意識と自然が息づく島根で、<br>教室経営の未来を考える3日間。</p>
+    <a href="#overview" class="hero-cta">詳細を確認する</a>
+  </div>
+</div>
+<section class="concept"><p class="label">Concept</p><p class="concept-quote">視座を上げ、視野を広げ、<br>視点を磨く。</p><p class="s-body">学習塾経営者が集い、島根を舞台に思考を整え、経営の未来を語り合う研修旅行。特別セミナー、AI活用研修、事例共有が融合した、「次の一手」を持ち帰るための3日間。</p></section>
+<div class="divider"></div>
+<section><p class="label">Value</p><h2 class="s-title">この研修旅行でできること</h2><div class="value-list">
+  <div class="value-item"><span class="v-num">01</span><div><p class="v-title">経営を俯瞰して考える</p><p class="v-desc">日常から離れ、視座を上げて教室経営を見つめ直す時間。</p></div></div>
+  <div class="value-item"><span class="v-num">02</span><div><p class="v-title">同業者と本音で語る</p><p class="v-desc">他塾のリアルな工夫・悩み・成功事例を共有し合える場。</p></div></div>
+  <div class="value-item"><span class="v-num">03</span><div><p class="v-title">AIを実践的に学ぶ</p><p class="v-desc">現場や経営にすぐ役立てられるAI活用を体験的に習得。</p></div></div>
+  <div class="value-item"><span class="v-num">04</span><div><p class="v-title">感性と思考を整える</p><p class="v-desc">神話と美意識が宿る島根で、内なる感覚を研ぎ澄ます。</p></div></div>
+  <div class="value-item"><span class="v-num">05</span><div><p class="v-title">次の一手を持ち帰る</p><p class="v-desc">すぐに動ける具体的な「次の一手」を見つけて帰る。</p></div></div>
+</div></section>
+<div class="divider"></div>
+<section class="program"><p class="label">Program</p><h2 class="s-title">研修プログラム</h2><div class="prog-list">
+  <div class="prog-card"><p class="prog-tag">Special Seminar</p><p class="prog-title">次の一手を磨く、経営戦略セッション</p><p class="prog-by">講師｜佐藤先生</p><p class="prog-desc">視座を上げ、視野を広げ、視点を磨く。島根で過ごす数日が、教室経営の未来を変えるきっかけになる。</p><div class="prog-kws"><span class="prog-kw">視座</span><span class="prog-kw">経営戦略</span><span class="prog-kw">次の一手</span></div></div>
+  <div class="prog-card"><p class="prog-tag">Training 01</p><p class="prog-title">教室経営を進化させる、AI活用研修</p><p class="prog-by">講師｜前川</p><p class="prog-desc">ひらめきを加速させ、思いつきを実装へとつなげる。教室経営の可能性を広げるAI活用研修です。</p><div class="prog-kws"><span class="prog-kw">AI活用</span><span class="prog-kw">実装</span><span class="prog-kw">改善</span></div></div>
+  <div class="prog-card"><p class="prog-tag">Training 02</p><p class="prog-title">現場の工夫を持ち寄る、実践共有セッション</p><p class="prog-by">事例発表者・共有メンバー募集</p><p class="prog-desc">参加者が発表者にもなれる、一方通行でない共有の場。</p><div class="prog-kws"><span class="prog-kw">事例発表</span><span class="prog-kw">実践共有</span></div></div>
+</div></section>
+<section><p class="label">Destinations</p><h2 class="s-title">島根を旅する意味</h2><div class="spots-grid">
+  <div class="spot wide"><img src="足立美術館_03.png" alt="足立美術館"><div class="spot-caption"><p class="spot-name">足立美術館</p><p class="spot-meaning">美意識や空間設計から学ぶ場</p></div></div>
+  <div class="spot"><img src="出雲大社_17.png" alt="出雲大社"><div class="spot-caption"><p class="spot-name">出雲大社</p><p class="spot-meaning">心を整える場</p></div></div>
+  <div class="spot"><img src="島根県立古代出雲歴史博物館_04.png" alt="歴史博物館"><div class="spot-caption"><p class="spot-name">古代出雲歴史博物館</p><p class="spot-meaning">歴史に触れる</p></div></div>
+  <div class="spot"><img src="松江フォーゲルパーク_11.png" alt="フォーゲルパーク"><div class="spot-caption"><p class="spot-name">松江フォーゲルパーク</p><p class="spot-meaning">感性をゆるめる</p></div></div>
+  <div class="spot"><img src="出雲そば_21.png" alt="出雲そば"><div class="spot-caption"><p class="spot-name">出雲そば</p><p class="spot-meaning">食文化を味わう</p></div></div>
+</div></section>
+<div class="divider"></div>
+<section class="who"><p class="label">For You</p><h2 class="s-title">こんな方におすすめ</h2><div class="who-list">
+  <div class="who-item"><span class="who-dot"></span>教室経営の方向性を見直したい方</div>
+  <div class="who-item"><span class="who-dot"></span>他塾のリアルな工夫を知りたい方</div>
+  <div class="who-item"><span class="who-dot"></span>AIを現場や経営に活かしたい方</div>
+  <div class="who-item"><span class="who-dot"></span>講師採用・運営面のヒントを得たい方</div>
+  <div class="who-item"><span class="who-dot"></span>日常から離れて思考を整理したい方</div>
+</div></section>
+<div class="divider"></div>
+<section id="overview"><p class="label">Overview</p><h2 class="s-title">開催概要</h2><div class="ov-table">
+  <div class="ov-row"><span class="ov-k">開催日程</span><span class="ov-v">2025年　近日公開</span></div>
+  <div class="ov-row"><span class="ov-k">開催地</span><span class="ov-v">島根県（出雲・松江エリア）</span></div>
+  <div class="ov-row"><span class="ov-k">対象</span><span class="ov-v">学習塾経営者・教室責任者</span></div>
+  <div class="ov-row"><span class="ov-k">定員</span><span class="ov-v">近日公開</span></div>
+  <div class="ov-row"><span class="ov-k">参加費</span><span class="ov-v">近日公開</span></div>
+</div></section>
+<section class="presenter"><p class="label">Join as Presenter</p><h2 class="s-title">事例発表者、募集します。</h2><p class="s-body">現場で培った工夫や実践を、ぜひ持ち寄ってください。成功例はもちろん、失敗からの学びも歓迎です。</p></section>
+<section class="cta"><p class="label">Apply</p><h2 class="cta-title">島根で、次の一手を決める。</h2><p class="cta-sub">定員に限りがございます。ご参加をご検討の方は、お早めにご確認ください。</p><a href="#" class="btn-primary">参加を申し込む</a><a href="#" class="btn-secondary">事例発表に応募する</a></section>
+<footer><p>ラーナーズ・ジム 島根研修旅行<br>お問い合わせ：maekawa@learners-gym.com</p></footer>
+</body>
+</html>

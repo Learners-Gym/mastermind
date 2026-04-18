@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神域で、次の一手を決める。～島根～</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+  background: #fdfcf8;
+  color: #2a2018;
+  -webkit-font-smoothing: antialiased;
+}
+/* Zen — vertical rhythm, minimal, serif */
+.hero {
+  position: relative; height: 100svh; min-height: 620px; overflow: hidden;
+}
+.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5) saturate(0.5); }
+.hero-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 40px 36px;
+}
+.hero-title {
+  font-size: 36px; font-weight: 400;
+  color: #f0ece0; line-height: 1.5;
+  letter-spacing: 0.12em; margin-bottom: 24px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+.hero-rule { width: 40px; height: 1px; background: rgba(240,236,224,0.4); margin: 0 auto 24px; }
+.hero-sub {
+  font-size: 13px; letter-spacing: 0.2em;
+  color: rgba(240,236,224,0.5); font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+  margin-bottom: 40px;
+}
+.hero-copy {
+  font-size: 13px; color: rgba(240,236,224,0.65);
+  line-height: 2.1; letter-spacing: 0.06em; margin-bottom: 36px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+}
+.hero-cta {
+  display: inline-block;
+  border: 1px solid rgba(240,236,224,0.3); color: rgba(240,236,224,0.75);
+  font-size: 12px; padding: 12px 28px; letter-spacing: 0.12em;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+}
+/* SECTIONS */
+section { padding: 80px 32px; }
+.label {
+  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: #b0a080; margin-bottom: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+}
+.s-title { font-size: 22px; font-weight: 400; color: #2a2018; line-height: 1.6; margin-bottom: 20px; letter-spacing: 0.05em; }
+.s-body {
+  font-size: 14px; color: #7a6a50; line-height: 2.1; letter-spacing: 0.04em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+}
+.thin-rule { height: 1px; background: #e8e0d0; margin: 0 32px; }
+/* CONCEPT */
+.concept { background: #f5f0e8; text-align: center; }
+.concept-quote { font-size: 24px; font-weight: 400; color: #2a2018; line-height: 1.8; letter-spacing: 0.1em; margin-bottom: 24px; }
+.concept-rule { width: 32px; height: 1px; background: #b0a080; margin: 0 auto 24px; }
+/* VALUE */
+.value-list { margin-top: 36px; }
+.value-item {
+  display: flex; gap: 20px;
+  padding: 24px 0; border-bottom: 1px solid #e8e0d0;
+  align-items: flex-start;
+}
+.value-item:last-child { border-bottom: none; }
+.v-kanji {
+  font-size: 22px; color: #c8b890; flex-shrink: 0; width: 32px;
+  text-align: center; line-height: 1;
+}
+.v-title { font-size: 15px; font-weight: 400; color: #2a2018; margin-bottom: 6px; letter-spacing: 0.04em; }
+.v-desc {
+  font-size: 13px; color: #7a6a50; line-height: 1.85; letter-spacing: 0.03em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+}
+/* PROGRAM */
+.program { background: #2a2018; }
+.program .label { color: #6a5a40; }
+.program .s-title { color: #e8dcc8; }
+.prog-list { margin-top: 32px; display: flex; flex-direction: column; gap: 24px; }
+.prog-item { border-top: 1px solid #3a3020; padding-top: 24px; }
+.prog-tag {
+  font-size: 10px; color: #8a7a60; letter-spacing: 0.2em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+  margin-bottom: 10px;
+}
+.prog-title { font-size: 18px; font-weight: 400; color: #e8dcc8; line-height: 1.6; margin-bottom: 10px; letter-spacing: 0.04em; }
+.prog-by { font-size: 12px; color: #5a4a30; margin-bottom: 10px; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+.prog-desc { font-size: 13px; color: #8a7a60; line-height: 1.9; letter-spacing: 0.04em; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+/* SPOTS — tall portrait layout */
+.spots-list { margin-top: 36px; display: flex; flex-direction: column; gap: 2px; }
+.spot-banner { position: relative; overflow: hidden; height: 60vw; max-height: 280px; }
+.spot-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65) saturate(0.8); }
+.spot-banner-text {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px 24px;
+  background: linear-gradient(to top, rgba(30,20,10,0.8) 0%, transparent 60%);
+}
+.sb-name { font-size: 18px; font-weight: 400; color: #e8dcc8; letter-spacing: 0.1em; margin-bottom: 6px; }
+.sb-meaning {
+  font-size: 12px; color: rgba(200,180,140,0.65); letter-spacing: 0.08em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+}
+/* WHO */
+.who { background: #f5f0e8; }
+.who-list { margin-top: 28px; }
+.who-item { padding: 18px 0; border-bottom: 1px solid #ddd4c0; font-size: 14px; color: #3a2a18; letter-spacing: 0.05em; display: flex; align-items: center; gap: 16px; }
+.who-item:last-child { border-bottom: none; }
+.who-mark { color: #b0a080; font-size: 16px; flex-shrink: 0; }
+/* OVERVIEW */
+.ov-table { margin-top: 28px; border: 1px solid #e0d8c8; }
+.ov-row { display: grid; grid-template-columns: 78px 1fr; border-bottom: 1px solid #e0d8c8; }
+.ov-row:last-child { border-bottom: none; }
+.ov-k { background: #f0ece0; padding: 14px; font-size: 11px; color: #a09070; letter-spacing: 0.08em; display: flex; align-items: center; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+.ov-v { padding: 14px 16px; font-size: 13px; color: #3a2a18; display: flex; align-items: center; letter-spacing: 0.04em; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+/* CTA */
+.cta { background: #2a2018; text-align: center; padding: 96px 32px; }
+.cta .label { color: #6a5a40; }
+.cta-title { font-size: 28px; font-weight: 400; color: #e8dcc8; line-height: 1.65; letter-spacing: 0.08em; margin-bottom: 20px; }
+.cta-rule { width: 40px; height: 1px; background: #5a4a30; margin: 0 auto 24px; }
+.cta-sub { font-size: 13px; color: #7a6a50; line-height: 2; letter-spacing: 0.06em; margin-bottom: 44px; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+.btn-p { display: block; border: 1px solid #c8b890; color: #e8dcc8; font-size: 14px; padding: 15px; letter-spacing: 0.1em; text-decoration: none; margin-bottom: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+.btn-s { display: block; border: 1px solid #3a3020; color: #6a5a40; font-size: 13px; padding: 14px; letter-spacing: 0.1em; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+footer { background: #1a1208; padding: 36px 32px; text-align: center; }
+footer p { font-size: 11px; color: #4a3a28; line-height: 2; letter-spacing: 0.08em; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img src="出雲大社_20.png" alt="出雲大社">
+  <div class="hero-overlay">
+    <h1 class="hero-title">神域で、<br>次の一手を決める。</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">〜 島 根 〜</p>
+    <p class="hero-copy">神話と歴史、美意識と自然が息づく島根で、<br>教室経営の未来を考える3日間。</p>
+    <a href="#overview" class="hero-cta">詳細を確認する</a>
+  </div>
+</div>
+
+<section class="concept">
+  <p class="label">Concept</p>
+  <p class="concept-quote">視座を上げ、<br>視野を広げ、<br>視点を磨く。</p>
+  <div class="concept-rule"></div>
+  <p class="s-body">学習塾経営者が集い、島根を舞台に思考を整え、経営の未来を語り合う研修旅行。特別セミナー、AI活用研修、事例共有が融合した、「次の一手」を持ち帰るための3日間。</p>
+</section>
+
+<div class="thin-rule"></div>
+
+<section>
+  <p class="label">Value</p>
+  <h2 class="s-title">この研修旅行でできること</h2>
+  <div class="value-list">
+    <div class="value-item"><span class="v-kanji">一</span><div><p class="v-title">経営を俯瞰して考える</p><p class="v-desc">日常から離れ、視座を上げて教室経営を見つめ直す時間。</p></div></div>
+    <div class="value-item"><span class="v-kanji">二</span><div><p class="v-title">同業者と本音で語る</p><p class="v-desc">他塾のリアルな工夫・悩み・成功事例を共有し合える場。</p></div></div>
+    <div class="value-item"><span class="v-kanji">三</span><div><p class="v-title">AIを実践的に学ぶ</p><p class="v-desc">現場や経営にすぐ役立てられるAI活用を体験的に習得。</p></div></div>
+    <div class="value-item"><span class="v-kanji">四</span><div><p class="v-title">感性と思考を整える</p><p class="v-desc">神話と美意識が宿る島根で、内なる感覚を研ぎ澄ます。</p></div></div>
+    <div class="value-item"><span class="v-kanji">五</span><div><p class="v-title">次の一手を持ち帰る</p><p class="v-desc">すぐに動ける具体的な「次の一手」を見つけて帰る。</p></div></div>
+  </div>
+</section>
+
+<section class="program">
+  <p class="label">Program</p>
+  <h2 class="s-title">研修プログラム</h2>
+  <div class="prog-list">
+    <div class="prog-item"><p class="prog-tag">Special Seminar</p><p class="prog-title">次の一手を磨く、経営戦略セッション</p><p class="prog-by">講師｜佐藤先生</p><p class="prog-desc">視座を上げ、視野を広げ、視点を磨く。島根で過ごす数日が、教室経営の未来を変えるきっかけになる。</p></div>
+    <div class="prog-item"><p class="prog-tag">Training 01</p><p class="prog-title">教室経営を進化させる、AI活用研修</p><p class="prog-by">講師｜前川</p><p class="prog-desc">ひらめきを加速させ、思いつきを実装へとつなげる。教室経営の可能性を広げるAI活用研修です。</p></div>
+    <div class="prog-item"><p class="prog-tag">Training 02</p><p class="prog-title">現場の工夫を持ち寄る、実践共有セッション</p><p class="prog-by">事例発表者・共有メンバー募集</p><p class="prog-desc">参加者が発表者にもなれる、一方通行でない共有の場。</p></div>
+  </div>
+</section>
+
+<section>
+  <p class="label">Destinations</p>
+  <h2 class="s-title">島根を旅する意味</h2>
+  <div class="spots-list">
+    <div class="spot-banner"><img src="足立美術館_05.png" alt="足立美術館"><div class="spot-banner-text"><p class="sb-name">足立美術館</p><p class="sb-meaning">美意識や空間設計から学ぶ場</p></div></div>
+    <div class="spot-banner"><img src="出雲大社_14.png" alt="出雲大社"><div class="spot-banner-text"><p class="sb-name">出雲大社</p><p class="sb-meaning">原点に立ち返り、心を整える場</p></div></div>
+    <div class="spot-banner"><img src="島根県立古代出雲歴史博物館_06.png" alt="歴史博物館"><div class="spot-banner-text"><p class="sb-name">古代出雲歴史博物館</p><p class="sb-meaning">歴史の厚みや、長く続く価値に触れる場</p></div></div>
+    <div class="spot-banner"><img src="松江フォーゲルパーク_09.png" alt="フォーゲルパーク"><div class="spot-banner-text"><p class="sb-name">松江フォーゲルパーク</p><p class="sb-meaning">感性をゆるめる場</p></div></div>
+  </div>
+</section>
+
+<div class="thin-rule"></div>
+
+<section class="who">
+  <p class="label">For You</p>
+  <h2 class="s-title">こんな方におすすめ</h2>
+  <div class="who-list">
+    <div class="who-item"><span class="who-mark">一</span>教室経営の方向性を見直したい方</div>
+    <div class="who-item"><span class="who-mark">二</span>他塾のリアルな工夫を知りたい方</div>
+    <div class="who-item"><span class="who-mark">三</span>AIを現場や経営に活かしたい方</div>
+    <div class="who-item"><span class="who-mark">四</span>講師採用・運営面のヒントを得たい方</div>
+    <div class="who-item"><span class="who-mark">五</span>日常から離れて思考を整理したい方</div>
+  </div>
+</section>
+
+<div class="thin-rule"></div>
+
+<section id="overview">
+  <p class="label">Overview</p>
+  <h2 class="s-title">開催概要</h2>
+  <div class="ov-table">
+    <div class="ov-row"><span class="ov-k">開催日程</span><span class="ov-v">2025年　近日公開</span></div>
+    <div class="ov-row"><span class="ov-k">開催地</span><span class="ov-v">島根県（出雲・松江エリア）</span></div>
+    <div class="ov-row"><span class="ov-k">対象</span><span class="ov-v">学習塾経営者・教室責任者</span></div>
+    <div class="ov-row"><span class="ov-k">定員</span><span class="ov-v">近日公開</span></div>
+    <div class="ov-row"><span class="ov-k">参加費</span><span class="ov-v">近日公開</span></div>
+  </div>
+</section>
+
+<section class="cta">
+  <p class="label">Apply</p>
+  <h2 class="cta-title">島根で、<br>次の一手を決める。</h2>
+  <div class="cta-rule"></div>
+  <p class="cta-sub">定員に限りがございます。<br>ご参加をご検討の方は、お早めにご確認ください。</p>
+  <a href="#" class="btn-p">参加を申し込む</a>
+  <a href="#" class="btn-s">事例発表に応募する</a>
+</section>
+
+<footer><p>ラーナーズ・ジム 島根研修旅行<br>お問い合わせ：maekawa@learners-gym.com</p></footer>
+</body>
+</html>
