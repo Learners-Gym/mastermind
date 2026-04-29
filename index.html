@@ -33,17 +33,30 @@ body {
 .hero-kicker {
   position: relative;
   overflow: hidden;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2px 0.4em;
+  max-width: min(100%, 320px);
   font-size: 12px; font-weight: 600;
-  letter-spacing: 0.08em; color: rgba(255,255,255,0.88);
+  line-height: 1.55;
+  letter-spacing: 0.03em; color: rgba(255,255,255,0.88);
+  text-align: center;
   text-transform: uppercase; margin-bottom: 20px;
-  padding: 7px 12px;
+  padding: 8px 13px;
   border: 1px solid rgba(255,255,255,0.28);
-  border-radius: 999px;
+  border-radius: 14px;
   background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(0,0,0,0.22));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 28px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.2);
   text-shadow: 0 1px 12px rgba(0,0,0,0.38);
+}
+.hero-kicker span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
 }
 .hero-kicker::before {
   content: "";
@@ -722,6 +735,9 @@ footer p {
 
   .hero-kicker {
     font-size: 12px;
+    max-width: none;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
     margin-bottom: 24px;
   }
 
@@ -1099,7 +1115,7 @@ footer p {
 <div class="hero">
   <img src="出雲大社_15.png" alt="出雲大社">
   <div class="hero-overlay">
-    <p class="hero-kicker">「マスターマインド」「C3プラチナ」 ブートキャンプ</p>
+    <p class="hero-kicker"><span>「マスターマインド」「C3プラチナ」</span><span>ブートキャンプ</span></p>
     <h1 class="hero-title">神域で、<br>次の一手を決める。</h1>
     <p class="hero-region">〜 島 根 〜</p>
     <p class="hero-copy">神話と歴史、美意識と自然が息づく島根で、<br>教室経営の未来を考える3日間。</p>
