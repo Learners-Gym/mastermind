@@ -76,34 +76,24 @@ body {
   line-height: 1.9; margin-bottom: 36px; max-width: 290px;
 }
 .hero-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: calc(100vw - 48px);
+  min-height: 46px;
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.38);
   color: #fff; font-size: 14px;
   padding: 13px 32px; border-radius: 8px;
+  line-height: 1.25;
   text-decoration: none; letter-spacing: 0.04em;
-}
-.hero-cta {
-  isolation: isolate;
+  white-space: nowrap;
 }
 .hero-cta::before {
-  z-index: -1;
-}
-.scroll-indicator {
-  position: absolute; bottom: 28px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column;
-  align-items: center; gap: 8px;
-}
-.scroll-indicator span {
-  font-size: 10px; letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.5); text-transform: uppercase;
-}
-.scroll-line {
-  width: 1px; height: 36px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
+  pointer-events: none;
 }
 @keyframes heroTextReveal {
   from {
@@ -1090,10 +1080,6 @@ footer p {
     <p class="hero-region">〜 島 根 〜</p>
     <p class="hero-copy">神話と歴史、美意識と自然が息づく島根で、<br>教室経営の未来を考える3日間。</p>
     <a href="#overview" class="hero-cta">詳細を確認する</a>
-  </div>
-  <div class="scroll-indicator">
-    <div class="scroll-line"></div>
-    <span>scroll</span>
   </div>
 </div>
 
