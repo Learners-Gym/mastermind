@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アナログ集客は終焉｜WEB&SNSで無料自動集客戦略</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #050506;
+  color: #f5f5f7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.seminar-hero {
+  position: relative;
+  min-height: 88svh;
+  padding: 28px 22px 56px;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.seminar-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.2)),
+    linear-gradient(to bottom, rgba(0,0,0,0.1), #050506 92%),
+    url("出雲大社_15.png") center / cover;
+  z-index: -2;
+}
+.seminar-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% 5% auto;
+  width: 58vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.34), transparent 62%);
+  filter: blur(10px);
+  z-index: -1;
+}
+.nav {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.82);
+  font-size: 12px;
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+}
+.nav-label {
+  color: rgba(255,255,255,0.52);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hero-inner {
+  width: min(980px, 100%);
+  margin: 80px auto 0;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(0,113,227,0.96), rgba(80,170,255,0.62));
+  border: 1px solid rgba(255,255,255,0.32);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  box-shadow: 0 0 28px rgba(0,113,227,0.44);
+}
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+h1 {
+  max-width: 900px;
+  font-size: clamp(34px, 8vw, 78px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 750;
+}
+.lead {
+  max-width: 720px;
+  margin-top: 24px;
+  color: rgba(245,245,247,0.78);
+  font-size: 16px;
+  line-height: 2;
+}
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 34px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-primary {
+  background: #0071e3;
+  color: #fff;
+  box-shadow: 0 16px 36px rgba(0,113,227,0.34);
+}
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.24);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.84);
+}
+section {
+  padding: 76px 22px;
+}
+.section-inner {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+}
+.label {
+  margin-bottom: 14px;
+  color: #86868b;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.section-title {
+  max-width: 780px;
+  font-size: 28px;
+  line-height: 1.45;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+.body {
+  max-width: 780px;
+  margin-top: 16px;
+  color: #a1a1a6;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+}
+.card {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  padding: 22px;
+}
+.card-num {
+  margin-bottom: 14px;
+  color: #0a84ff;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.card-title {
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+.card-text {
+  margin-top: 10px;
+  color: #a1a1a6;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.flow {
+  margin-top: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.flow-row {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.flow-row:last-child { border-bottom: 0; }
+.flow-time {
+  padding: 16px;
+  color: #86868b;
+  font-size: 12px;
+  background: rgba(255,255,255,0.04);
+}
+.flow-content {
+  padding: 16px;
+}
+.flow-title {
+  font-size: 14px;
+  font-weight: 650;
+}
+.flow-text {
+  margin-top: 6px;
+  color: #a1a1a6;
+  font-size: 13px;
+  line-height: 1.75;
+}
+.closing {
+  background: radial-gradient(circle at 50% 0%, rgba(0,113,227,0.22), transparent 48%), #000;
+  text-align: center;
+}
+.closing .section-title,
+.closing .body {
+  margin-left: auto;
+  margin-right: auto;
+}
+.closing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 34px auto 0;
+  width: min(440px, 100%);
+}
+footer {
+  padding: 30px 22px;
+  background: #050506;
+  color: #636366;
+  text-align: center;
+  font-size: 11px;
+}
+@media (min-width: 760px) {
+  .seminar-hero {
+    padding: 42px max(48px, calc((100vw - 1120px) / 2)) 80px;
+  }
+  .nav {
+    left: max(48px, calc((100vw - 1120px) / 2));
+    right: max(48px, calc((100vw - 1120px) / 2));
+  }
+  .hero-actions,
+  .closing-actions {
+    flex-direction: row;
+  }
+  .btn {
+    min-width: 220px;
+  }
+  section {
+    padding: 104px max(48px, calc((100vw - 1040px) / 2));
+  }
+  .section-title {
+    font-size: 40px;
+  }
+  .body {
+    font-size: 16px;
+  }
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .card {
+    min-height: 230px;
+    padding: 26px;
+  }
+  .flow-row {
+    grid-template-columns: 150px 1fr;
+  }
+  .flow-time,
+  .flow-content {
+    padding: 20px 24px;
+  }
+}
+</style>
+</head>
+<body>
+<header class="seminar-hero">
+  <nav class="nav">
+    <a class="back-link" href="index.html">← 研修ページへ戻る</a>
+    <span class="nav-label">Special Seminar</span>
+  </nav>
+  <div class="hero-inner">
+    <p class="eyebrow">Special Seminar</p>
+    <h1>アナログ集客は終焉‼️<br>WEB&amp;SNSで無料自動集客戦略🔥</h1>
+    <p class="lead">チラシは捨てられる。でも、検索結果は残り続ける。学習塾が地域で選ばれ続けるために、WEBとSNSを資産化し、問い合わせが自然に生まれる導線を設計するセミナーです。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="index.html#overview">研修概要を見る</a>
+      <a class="btn btn-secondary" href="index.html">メインページへ戻る</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="section-inner">
+    <p class="label">Theme</p>
+    <h2 class="section-title">紙の反応を追う集客から、検索され続ける仕組みへ。</h2>
+    <p class="body">短期的な配布量や偶然の反応に頼るのではなく、保護者が塾を探す瞬間に見つかり、信頼され、問い合わせまで進むWEB導線を整えます。広告費を増やす前に、まず自塾の情報発信を「残る資産」に変えていくことがテーマです。</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <p class="label">What You Learn</p>
+    <h2 class="section-title">このセミナーで扱うこと</h2>
+    <div class="grid">
+      <div class="card">
+        <p class="card-num">01</p>
+        <h3 class="card-title">検索で見つかる塾づくり</h3>
+        <p class="card-text">地域名、学年、悩み、指導形態など、保護者が検索する言葉から逆算してWEB上の見え方を整えます。</p>
+      </div>
+      <div class="card">
+        <p class="card-num">02</p>
+        <h3 class="card-title">SNSを問い合わせ導線に変える</h3>
+        <p class="card-text">投稿を頑張るだけで終わらせず、認知、信頼、比較、相談までつながるSNS運用の型を考えます。</p>
+      </div>
+      <div class="card">
+        <p class="card-num">03</p>
+        <h3 class="card-title">無料で自動化する仕組み</h3>
+        <p class="card-text">既存のWEBページ、Googleビジネスプロフィール、SNS、フォームを連携させ、少ない労力で反応を積み上げます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <p class="label">Sample Agenda</p>
+    <h2 class="section-title">当日の進行サンプル</h2>
+    <div class="flow">
+      <div class="flow-row">
+        <div class="flow-time">Part 1</div>
+        <div class="flow-content">
+          <p class="flow-title">アナログ集客の限界を整理する</p>
+          <p class="flow-text">チラシ、紹介、口コミ、地域看板の役割を見直し、WEBへ移すべき情報と残すべき接点を分けます。</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Part 2</div>
+        <div class="flow-content">
+          <p class="flow-title">保護者の検索行動から導線を設計する</p>
+          <p class="flow-text">塾を探す保護者がどの順番で情報を見るかを想定し、問い合わせ前の不安を減らすページ構成を作ります。</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Part 3</div>
+        <div class="flow-content">
+          <p class="flow-title">SNSとWEBを連動させる</p>
+          <p class="flow-text">投稿、実績、教室の空気、講師紹介、体験申込を一本の流れにし、継続的に見込み客と接点を持ちます。</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Part 4</div>
+        <div class="flow-content">
+          <p class="flow-title">自塾で実行する次の一手を決める</p>
+          <p class="flow-text">研修後すぐに着手する改善項目を、優先順位つきで具体化します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="section-inner">
+    <p class="label">Next Action</p>
+    <h2 class="section-title">集客の労力を、残り続ける資産へ。</h2>
+    <p class="body">このページはサンプルです。申込フォームや講師プロフィール、詳細タイムテーブルを追加して、本番用のセミナー詳細ページへ拡張できます。</p>
+    <div class="closing-actions">
+      <a class="btn btn-primary" href="index.html#overview">開催概要を見る</a>
+      <a class="btn btn-secondary" href="index.html">研修ページへ戻る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Learners-Gym. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

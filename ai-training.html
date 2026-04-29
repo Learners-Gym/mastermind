@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教室経営を進化させるAI活用研修</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #050506;
+  color: #f5f5f7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.training-hero {
+  position: relative;
+  min-height: 88svh;
+  padding: 28px 22px 56px;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.training-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.74), rgba(0,0,0,0.24)),
+    linear-gradient(to bottom, rgba(0,0,0,0.08), #050506 92%),
+    url("足立美術館_03.png") center / cover;
+  z-index: -2;
+}
+.training-hero::after {
+  content: "";
+  position: absolute;
+  right: -18%;
+  bottom: 4%;
+  width: 58vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52,199,89,0.3), transparent 62%);
+  filter: blur(10px);
+  z-index: -1;
+}
+.nav {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.82);
+  font-size: 12px;
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+}
+.nav-label {
+  color: rgba(255,255,255,0.52);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hero-inner {
+  width: min(980px, 100%);
+  margin: 80px auto 0;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(52,199,89,0.96), rgba(95,220,128,0.62));
+  border: 1px solid rgba(255,255,255,0.32);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  box-shadow: 0 0 28px rgba(52,199,89,0.38);
+}
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+h1 {
+  max-width: 900px;
+  font-size: clamp(34px, 8vw, 76px);
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  font-weight: 750;
+}
+.lead {
+  max-width: 720px;
+  margin-top: 24px;
+  color: rgba(245,245,247,0.78);
+  font-size: 16px;
+  line-height: 2;
+}
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 34px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-primary {
+  background: #34c759;
+  color: #07150b;
+  box-shadow: 0 16px 36px rgba(52,199,89,0.28);
+}
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.24);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.84);
+}
+section {
+  padding: 76px 22px;
+}
+.section-inner {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+}
+.label {
+  margin-bottom: 14px;
+  color: #86868b;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.section-title {
+  max-width: 800px;
+  font-size: 28px;
+  line-height: 1.45;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+.body {
+  max-width: 790px;
+  margin-top: 16px;
+  color: #a1a1a6;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+}
+.card {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  padding: 22px;
+}
+.card-num {
+  margin-bottom: 14px;
+  color: #34c759;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.card-title {
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+.card-text {
+  margin-top: 10px;
+  color: #a1a1a6;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.flow {
+  margin-top: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.flow-row {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.flow-row:last-child { border-bottom: 0; }
+.flow-time {
+  padding: 16px;
+  color: #86868b;
+  font-size: 12px;
+  background: rgba(255,255,255,0.04);
+}
+.flow-content {
+  padding: 16px;
+}
+.flow-title {
+  font-size: 14px;
+  font-weight: 650;
+}
+.flow-text {
+  margin-top: 6px;
+  color: #a1a1a6;
+  font-size: 13px;
+  line-height: 1.75;
+}
+.closing {
+  background: radial-gradient(circle at 50% 0%, rgba(52,199,89,0.2), transparent 48%), #000;
+  text-align: center;
+}
+.closing .section-title,
+.closing .body {
+  margin-left: auto;
+  margin-right: auto;
+}
+.closing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 34px auto 0;
+  width: min(440px, 100%);
+}
+footer {
+  padding: 30px 22px;
+  background: #050506;
+  color: #636366;
+  text-align: center;
+  font-size: 11px;
+}
+@media (min-width: 760px) {
+  .training-hero {
+    padding: 42px max(48px, calc((100vw - 1120px) / 2)) 80px;
+  }
+  .nav {
+    left: max(48px, calc((100vw - 1120px) / 2));
+    right: max(48px, calc((100vw - 1120px) / 2));
+  }
+  .hero-actions,
+  .closing-actions {
+    flex-direction: row;
+  }
+  .btn {
+    min-width: 220px;
+  }
+  section {
+    padding: 104px max(48px, calc((100vw - 1040px) / 2));
+  }
+  .section-title {
+    font-size: 40px;
+  }
+  .body {
+    font-size: 16px;
+  }
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .card {
+    min-height: 230px;
+    padding: 26px;
+  }
+  .flow-row {
+    grid-template-columns: 150px 1fr;
+  }
+  .flow-time,
+  .flow-content {
+    padding: 20px 24px;
+  }
+}
+</style>
+</head>
+<body>
+<header class="training-hero">
+  <nav class="nav">
+    <a class="back-link" href="index.html">← 研修ページへ戻る</a>
+    <span class="nav-label">Training 01</span>
+  </nav>
+  <div class="hero-inner">
+    <p class="eyebrow">Training 01</p>
+    <h1>教室経営を進化させる、<br>AI活用研修</h1>
+    <p class="lead">ひらめきを加速させ、思いつきを実装へとつなげる。日々の教室運営、保護者対応、教材作成、集客改善にAIをどう組み込むかを、具体的な使い方と設計の両面から扱う研修です。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="index.html#overview">研修概要を見る</a>
+      <a class="btn btn-secondary" href="index.html">メインページへ戻る</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="section-inner">
+    <p class="label">Theme</p>
+    <h2 class="section-title">AIを便利ツールで終わらせず、教室経営の実装力に変える。</h2>
+    <p class="body">AIは文章を作るだけの道具ではありません。教室の判断、準備、改善、発信のスピードを上げるための思考パートナーです。この研修では、現場で使えるプロンプト、業務フローへの組み込み方、試作から改善までの進め方を扱います。</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <p class="label">What You Learn</p>
+    <h2 class="section-title">この研修で扱うこと</h2>
+    <div class="grid">
+      <div class="card">
+        <p class="card-num">01</p>
+        <h3 class="card-title">教室業務に使えるAIの型</h3>
+        <p class="card-text">保護者連絡、面談準備、講師育成、教材作成など、繰り返し発生する業務をAIで軽くする型を整理します。</p>
+      </div>
+      <div class="card">
+        <p class="card-num">02</p>
+        <h3 class="card-title">アイデアをすぐ試作する</h3>
+        <p class="card-text">思いつきを企画書、案内文、LP構成、投稿案、チェックリストへ変換し、すぐに検証できる形にします。</p>
+      </div>
+      <div class="card">
+        <p class="card-num">03</p>
+        <h3 class="card-title">経営判断の壁打ちに使う</h3>
+        <p class="card-text">課題の分解、優先順位づけ、施策比較、振り返りまで、AIを経営者の思考補助として活用します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <p class="label">Sample Agenda</p>
+    <h2 class="section-title">当日の進行サンプル</h2>
+    <div class="flow">
+      <div class="flow-row">
+        <div class="flow-time">Part 1</div>
+        <div class="flow-content">
+          <p class="flow-title">AI活用の現在地を整理する</p>
+          <p class="flow-text">何に使えるか、どこまで任せるか、教室経営で失敗しやすい使い方を確認します。</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Part 2</div>
+        <div class="flow-content">
+          <p class="flow-title">現場業務のAI化ポイントを見つける</p>
+          <p class="flow-text">日々の作業を棚卸しし、AIで短縮できる作業、質を上げられる作業、任せない作業を分けます。</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Part 3</div>
+        <div class="flow-content">
+          <p class="flow-title">プロンプトから成果物まで作る</p>
+          <p class="flow-text">案内文、投稿案、教材補助、保護者対応文などを題材に、実際に作って改善します。</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Part 4</div>
+        <div class="flow-content">
+          <p class="flow-title">自塾のAI導入アクションを決める</p>
+          <p class="flow-text">研修後すぐに取り入れる小さな実装を決め、継続運用できる形に落とし込みます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="section-inner">
+    <p class="label">Next Action</p>
+    <h2 class="section-title">AIを、思考と実装のスピードに変える。</h2>
+    <p class="body">このページはサンプルです。実際の使用ツール、ワーク内容、参加者の持ち物、事前準備などを追加して、本番用の研修詳細ページへ拡張できます。</p>
+    <div class="closing-actions">
+      <a class="btn btn-primary" href="index.html#overview">開催概要を見る</a>
+      <a class="btn btn-secondary" href="index.html">研修ページへ戻る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Learners-Gym. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
